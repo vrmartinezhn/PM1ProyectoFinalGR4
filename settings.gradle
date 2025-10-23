@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Supermercado El Económico"
+rootProject.name = "El Asados Steaks"
 include ':app'
