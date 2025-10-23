@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.supeconomico'
+    namespace 'com.example.asados_steaks'
     compileSdk 36
 
     defaultConfig {
-        applicationId "com.example.supeconomico"
+        applicationId 'com.example.asados_steaks'
         minSdk 24
         targetSdk 36
         versionCode 1

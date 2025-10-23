@@ -1,4 +1,4 @@
-package com.example.supeconomico;
+package com.example.asados_steaks;
 
 import org.junit.Test;
 
