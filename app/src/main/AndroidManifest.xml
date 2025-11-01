@@ -12,7 +12,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ElAsadosSteaks">
         <activity
-            android:name=".MainActivity"
+            android:name=".Pedido_Adapter"
+            android:exported="false" />
+        <activity
+            android:name=".DashboardRepartidorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PedidosActivosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DashboardUsuarioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ResetPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
