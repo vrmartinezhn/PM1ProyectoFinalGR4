@@ -4,8 +4,8 @@
 
     <!-- Array de roles para el Spinner -->
     <string-array name="roles_array">
-        <item>usuario</item>
-        <item>repartidor</item>
-        <item>admin</item>
+        <item>SELECCIONA EL ROL</item>
+        <item>Usuario</item>
+        <item>Repartidor</item>
     </string-array>
 </resources>

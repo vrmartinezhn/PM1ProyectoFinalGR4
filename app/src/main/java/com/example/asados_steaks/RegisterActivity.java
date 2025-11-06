@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -18,7 +19,7 @@ import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText emailField, passwordField;
+    EditText emailField, passwordField, nombreField;
     Button registerBtn, backToLoginBtn;
     Spinner spinnerRol;
     FirebaseAuth mAuth;
@@ -30,18 +31,46 @@ public class RegisterActivity extends AppCompatActivity {
 
         emailField = findViewById(R.id.editTextEmail);
         passwordField = findViewById(R.id.editTextPassword);
+        nombreField = findViewById(R.id.editTextNombre);
         registerBtn = findViewById(R.id.buttonRegister);
         backToLoginBtn = findViewById(R.id.backButton);
         spinnerRol = findViewById(R.id.spinnerRol);
         mAuth = FirebaseAuth.getInstance();
 
+        // 🎨 Adaptador personalizado para el Spinner
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this,
+                R.layout.spinner_item, // diseño personalizado
+                getResources().getStringArray(R.array.roles_array)
+        );
+        adapter.setDropDownViewResource(R.layout.spinner_item);
+        spinnerRol.setAdapter(adapter);
+
         // 🔐 REGISTRARSE
         registerBtn.setOnClickListener(v -> {
             String email = emailField.getText().toString().trim();
             String password = passwordField.getText().toString().trim();
+            String nombre = nombreField.getText().toString().trim();
             String rolSeleccionado = spinnerRol.getSelectedItem().toString();
 
-            // Validaciones personalizadas
+            // ❌ Bloquear registro como administrador
+            if (rolSeleccionado.equals("admin")) {
+                Toast.makeText(this, "No puedes registrarte como administrador", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // ✅ Validación del rol
+            if (rolSeleccionado.equals("Selecciona el rol")) {
+                Toast.makeText(this, "Por favor selecciona un rol válido", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Validaciones generales
+            if (TextUtils.isEmpty(nombre)) {
+                nombreField.setError("Este campo es obligatorio");
+                return;
+            }
+
             if (TextUtils.isEmpty(email)) {
                 emailField.setError("Este campo es obligatorio");
                 return;
@@ -72,7 +101,8 @@ public class RegisterActivity extends AppCompatActivity {
                                 String uid = user.getUid();
 
                                 HashMap<String, Object> userData = new HashMap<>();
-                                userData.put("email", email);
+                                userData.put("correo", email);
+                                userData.put("nombre", nombre);
                                 userData.put("rol", rolSeleccionado);
 
                                 ref.child(uid).setValue(userData)

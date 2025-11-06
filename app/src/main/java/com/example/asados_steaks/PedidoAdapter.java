@@ -4,28 +4,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import androidx.annotation.NonNull;
+
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 
-public class PedidoAdapter extends RecyclerView.Adapter<PedidoAdapter.PedidoViewHolder> {
+public class PedidoAdapter extends RecyclerView.Adapter<PedidoAdapter.ViewHolder> {
 
-    private final ArrayList<String> pedidos;
+    ArrayList<Pedido> pedidos;
 
-    public PedidoAdapter(ArrayList<String> pedidos) {
+    public PedidoAdapter(ArrayList<Pedido> pedidos) {
         this.pedidos = pedidos;
     }
 
-    @NonNull
     @Override
-    public PedidoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_pedido, parent, false);
-        return new PedidoViewHolder(view);
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_pedido, parent, false);
+        return new ViewHolder(vista);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PedidoViewHolder holder, int position) {
-        holder.textPedido.setText(pedidos.get(position));
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        Pedido pedido = pedidos.get(position);
+        holder.textEstado.setText("Estado: " + pedido.estado);
+        holder.textFecha.setText("Fecha: " + pedido.fecha);
     }
 
     @Override
@@ -33,12 +35,13 @@ public class PedidoAdapter extends RecyclerView.Adapter<PedidoAdapter.PedidoView
         return pedidos.size();
     }
 
-    static class PedidoViewHolder extends RecyclerView.ViewHolder {
-        TextView textPedido;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView textEstado, textFecha;
 
-        public PedidoViewHolder(@NonNull View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
-            textPedido = itemView.findViewById(R.id.textPedido);
+            textEstado = itemView.findViewById(R.id.textEstado);
+            textFecha = itemView.findViewById(R.id.textFecha);
         }
     }
 }

@@ -21,11 +21,24 @@ public class DashboardRepartidorActivity extends AppCompatActivity {
         recyclerPedidos = findViewById(R.id.recyclerPedidos);
         buttonCerrarPedido = findViewById(R.id.buttonCerrarPedido);
 
-        // Simular pedidos asignados
-        ArrayList<String> pedidos = new ArrayList<>();
-        pedidos.add("Pedido #1 - Skarleth - 9876-5432");
-        pedidos.add("Pedido #2 - Carlos - 9123-4567");
-        pedidos.add("Pedido #3 - Ana - 9988-1122");
+        // Simular pedidos asignados como objetos Pedido
+        ArrayList<Pedido> pedidos = new ArrayList<>();
+
+        Pedido pedido1 = new Pedido();
+        pedido1.estado = "En camino";
+        pedido1.fecha = "2025-11-05";
+
+        Pedido pedido2 = new Pedido();
+        pedido2.estado = "En cocina";
+        pedido2.fecha = "2025-11-04";
+
+        Pedido pedido3 = new Pedido();
+        pedido3.estado = "Nuevo";
+        pedido3.fecha = "2025-11-03";
+
+        pedidos.add(pedido1);
+        pedidos.add(pedido2);
+        pedidos.add(pedido3);
 
         // Configurar RecyclerView
         recyclerPedidos.setLayoutManager(new LinearLayoutManager(this));

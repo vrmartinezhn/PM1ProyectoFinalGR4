@@ -7,7 +7,21 @@
     android:padding="24dp"
     tools:context=".LoginActivity">
 
+    <!-- Logo -->
+
     <!-- Título -->
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="323dp"
+        android:layout_height="228dp"
+        android:layout_marginTop="4dp"
+        android:contentDescription="Logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
     <TextView
         android:id="@+id/loginTitle"
         android:layout_width="wrap_content"
@@ -17,50 +31,40 @@
         android:textSize="28sp"
         android:textStyle="bold"
         android:textAlignment="center"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp" />
-
-    <!-- Logo -->
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="364dp"
-        android:layout_height="259dp"
         android:layout_marginTop="16dp"
-        android:contentDescription="Logo"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginTitle"
-        app:srcCompat="@drawable/whatsapp_image_2025_10_23_at_18_00_49__1_" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Correo -->
+
+    <!-- Contraseña -->
     <EditText
         android:id="@+id/emailInput"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Correo electrónico"
+        android:layout_marginTop="8dp"
         android:backgroundTint="#F48FB1"
-        android:textColor="#000000"
+        android:hint="Correo electrónico"
         android:inputType="textEmailAddress"
-        app:layout_constraintTop_toBottomOf="@id/imageView"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loginTitle" />
 
-    <!-- Contraseña -->
     <EditText
         android:id="@+id/passwordInput"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:hint="Contraseña"
         android:inputType="textPassword"
         android:backgroundTint="#F48FB1"
         android:textColor="#000000"
         app:layout_constraintTop_toBottomOf="@id/emailInput"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="12dp" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Botón Iniciar Sesión -->
     <Button
@@ -68,7 +72,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="10dp"
         android:backgroundTint="#EC407A"
         android:text="Iniciar Sesión"
@@ -93,19 +97,34 @@
         app:layout_constraintTop_toBottomOf="@id/loginButton" />
 
     <!-- Botón Olvidaste tu contraseña -->
+
     <Button
         android:id="@+id/resetPasswordButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="80dp"
         android:backgroundTint="#F8BBD0"
         android:text="¿Olvidaste tu contraseña?"
         android:textColor="#C2185B"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/registerButton" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonClaveTemporal" />
+
+    <Button
+        android:id="@+id/buttonClaveTemporal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="#EC407A"
+        android:text="Solicita una clave temporal"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.432"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
