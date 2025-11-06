@@ -1,0 +1,100 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="12dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="6dp"
+    android:background="#FFFFFF">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/imagePlatillo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="Imagen del platillo"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="#FFE4E1" />
+
+        <TextView
+            android:id="@+id/textNombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Nombre del platillo"
+            android:textColor="#D81B60"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/imagePlatillo"
+            app:layout_constraintTop_toTopOf="@id/imagePlatillo"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="12dp" />
+
+        <TextView
+            android:id="@+id/textDescripcion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Descripción del platillo"
+            android:textColor="#555555"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/textNombre"
+            app:layout_constraintTop_toBottomOf="@id/textNombre"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:id="@+id/textPrecio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="L. 000"
+            android:textColor="#FFC107"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/textNombre"
+            app:layout_constraintTop_toBottomOf="@id/textDescripcion"
+            android:layout_marginTop="6dp" />
+
+        <Button
+            android:id="@+id/buttonMenos"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#D81B60"
+            android:text="-"
+            android:textColor="#FFFFFF"
+            app:layout_constraintStart_toStartOf="@id/textPrecio"
+            app:layout_constraintTop_toBottomOf="@id/textPrecio" />
+
+        <TextView
+            android:id="@+id/textCantidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            app:layout_constraintTop_toTopOf="@id/buttonMenos"
+            app:layout_constraintStart_toEndOf="@id/buttonMenos"
+            app:layout_constraintEnd_toStartOf="@id/buttonMas"
+            app:layout_constraintBottom_toBottomOf="@id/buttonMenos"
+            android:layout_marginHorizontal="8dp" />
+
+        <Button
+            android:id="@+id/buttonMas"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:backgroundTint="#D81B60"
+            android:text="+"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="@id/buttonMenos"
+            app:layout_constraintStart_toEndOf="@id/textCantidad"
+            app:layout_constraintTop_toTopOf="@id/buttonMenos"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

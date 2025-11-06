@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "355510365102",
+    "project_id": "elasadossteaksapp",
+    "storage_bucket": "elasadossteaksapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:355510365102:android:8707d17baa14f75106f63f",
+        "android_client_info": {
+          "package_name": "com.example.asados_steaks"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgSRbBbRJgVGLODRBfbvdUTM9zH5nkFzs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
