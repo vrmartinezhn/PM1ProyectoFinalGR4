@@ -2,13 +2,13 @@ package com.example.asados_steaks;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
 
@@ -17,7 +17,6 @@ import java.util.ArrayList;
 public class DashboardUsuarioActivity extends AppCompatActivity {
 
     RecyclerView recyclerPedidos;
-    Button buttonNuevoPedido;
     ArrayList<Pedido> listaPedidos;
     PedidoAdapter adapter;
 
@@ -27,15 +26,23 @@ public class DashboardUsuarioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard_usuario);
 
         recyclerPedidos = findViewById(R.id.recyclerPedidos);
-        buttonNuevoPedido = findViewById(R.id.buttonNuevoPedido);
-
         recyclerPedidos.setLayoutManager(new LinearLayoutManager(this));
+
         listaPedidos = new ArrayList<>();
         adapter = new PedidoAdapter(listaPedidos);
         recyclerPedidos.setAdapter(adapter);
 
-        buttonNuevoPedido.setOnClickListener(v -> {
+        // Botón flotante: Nuevo Pedido
+        FloatingActionButton fabNuevoPedido = findViewById(R.id.fabNuevoPedido);
+        fabNuevoPedido.setOnClickListener(v -> {
             Intent intent = new Intent(this, NuevoPedidoActivity.class);
+            startActivity(intent);
+        });
+
+        // Botón flotante: Perfil de Usuario
+        FloatingActionButton fabPerfilUsuario = findViewById(R.id.fabPerfilUsuario);
+        fabPerfilUsuario.setOnClickListener(v -> {
+            Intent intent = new Intent(this, PerfilUsuarioActivity.class);
             startActivity(intent);
         });
 

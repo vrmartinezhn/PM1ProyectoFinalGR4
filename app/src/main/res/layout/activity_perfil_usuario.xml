@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <!-- Foto de perfil -->
+        <ImageView
+            android:id="@+id/imageFoto"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/circle_bg"
+            android:scaleType="centerCrop"
+            android:contentDescription="Foto de perfil" />
+
+        <!-- Botones de foto -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/buttonTomarFoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="#D81B60"
+                android:text="Tomar foto"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/buttonSeleccionarFoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Galería"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#D81B60" />
+        </LinearLayout>
+
+        <!-- Campos de texto -->
+        <EditText
+            android:id="@+id/editNombre"
+            android:hint="Nombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edittext_bg"
+            android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/editTelefono"
+            android:hint="Teléfono"
+            android:inputType="phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/edittext_bg"
+            android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/editDescripcion"
+            android:hint="Descripción"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/edittext_bg"
+            android:padding="12dp" />
+
+        <!-- Ubicación -->
+        <TextView
+            android:id="@+id/textUbicacion"
+            android:text="Ubicación: -- , --"
+            android:textColor="#555555"
+            android:textSize="14sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp" />
+
+        <Button
+            android:id="@+id/buttonUbicacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Seleccionar en mapa"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#D81B60"
+            android:layout_marginTop="8dp" />
+
+        <!-- Guardar -->
+        <Button
+            android:id="@+id/buttonGuardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#F2A6C1"
+            android:text="Guardar perfil"
+            android:textColor="#C2185B" />
+    </LinearLayout>
+</ScrollView>
