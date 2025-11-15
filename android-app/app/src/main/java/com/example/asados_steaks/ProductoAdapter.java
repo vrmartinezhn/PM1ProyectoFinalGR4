@@ -3,7 +3,8 @@ package com.example.asados_steaks;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,21 +28,23 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Producto producto = productos.get(position);
-        holder.textNombre.setText(producto.nombre);
-        holder.textPrecio.setText("L. " + producto.precio);
-        holder.textCantidad.setText(String.valueOf(producto.cantidad));
+        holder.textNombre.setText(producto.getNombre());
+        holder.textPrecio.setText("L. " + producto.getPrecio());
+        holder.textCantidad.setText(String.valueOf(producto.getCantidad()));
+        holder.imagePlatillo.setImageResource(producto.getImagenId());
 
-        holder.buttonMas.setOnClickListener(v -> {
-            producto.cantidad++;
-            holder.textCantidad.setText(String.valueOf(producto.cantidad));
+        holder.buttonMas.setOnClickListener((View v) -> {
+            producto.setCantidad(producto.getCantidad() + 1);
+            holder.textCantidad.setText(String.valueOf(producto.getCantidad()));
         });
 
-        holder.buttonMenos.setOnClickListener(v -> {
-            if (producto.cantidad > 0) {
-                producto.cantidad--;
-                holder.textCantidad.setText(String.valueOf(producto.cantidad));
+        holder.buttonMenos.setOnClickListener((View v) -> {
+            if (producto.getCantidad() > 0) {
+                producto.setCantidad(producto.getCantidad() - 1);
+                holder.textCantidad.setText(String.valueOf(producto.getCantidad()));
             }
         });
+
     }
 
     @Override
@@ -51,10 +54,12 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView textNombre, textPrecio, textCantidad;
-        Button buttonMas, buttonMenos;
+        ImageButton buttonMas, buttonMenos;
+        ImageView imagePlatillo;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            imagePlatillo = itemView.findViewById(R.id.imagePlatillo);
             textNombre = itemView.findViewById(R.id.textNombre);
             textPrecio = itemView.findViewById(R.id.textPrecio);
             textCantidad = itemView.findViewById(R.id.textCantidad);

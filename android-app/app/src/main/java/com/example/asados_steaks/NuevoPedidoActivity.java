@@ -11,7 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class NuevoPedidoActivity extends AppCompatActivity {
 
@@ -42,12 +45,12 @@ public class NuevoPedidoActivity extends AppCompatActivity {
 
         productosSeleccionados.add(new Producto(
                 "Parrillada familiar", 0, 450,
-                "Carne de res, cerdo, pollo, chorizo, papas, ensalada",
+                "Carne de res, chuleta, pollo, chorizo, tajadas, frijoles",
                 R.drawable.parrillada_familiar));
 
         productosSeleccionados.add(new Producto(
                 "Plato de Res", 0, 135,
-                "Carne de res a la parrilla, arroz, ensalada",
+                "Carne de res a la parrilla, frijoles, queso, encurtido",
                 R.drawable.plato_res));
 
         productosSeleccionados.add(new Producto(
@@ -57,7 +60,7 @@ public class NuevoPedidoActivity extends AppCompatActivity {
 
         productosSeleccionados.add(new Producto(
                 "Chuleta", 0, 110,
-                "Chuleta de cerdo, puré de papa, ensalada",
+                "Chuleta de cerdo, tajadas, ensalada",
                 R.drawable.chuleta));
 
         recyclerMenu.getAdapter().notifyDataSetChanged();
@@ -66,14 +69,33 @@ public class NuevoPedidoActivity extends AppCompatActivity {
     private void guardarPedido() {
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
+        // 🗓️ Fecha actual
+        String fechaActual = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+
+        // 🧮 Calcular total y descripción
+        int total = 0;
+        StringBuilder descripcionProductos = new StringBuilder();
+
+        for (Producto p : productosSeleccionados) {
+            if (p.getCantidad() > 0) {
+                total += p.getCantidad() * p.getPrecio();
+                descripcionProductos.append(p.getNombre())
+                        .append(" x").append(p.getCantidad())
+                        .append(", ");
+            }
+        }
+
+        // 🛒 Crear pedido
         Pedido pedido = new Pedido();
         pedido.clienteId = uid;
         pedido.estado = "nuevo";
-        pedido.fecha = "2025-11-05";
-        pedido.productos = productosSeleccionados;
-        pedido.ubicacion = new Ubicacion(15.832, -87.938); // temporal, luego se usa GPS
+        pedido.fecha = fechaActual;
+        pedido.descripcion = descripcionProductos.toString();
+        pedido.total = total;
+        pedido.ubicacion = new Ubicacion(15.832, -87.938); // temporal, luego GPS real
         pedido.calificacion = null;
 
+        // 🚀 Enviar a Firebase
         FirebaseDatabase.getInstance().getReference("pedidos")
                 .push().setValue(pedido)
                 .addOnCompleteListener(task -> {
